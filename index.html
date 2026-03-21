@@ -1,175 +1,517 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Personal Resume</title>
-</head>
-<body>
 
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+Pro:wght@300;400;600&display=swap");
+
+      body {
+        font-family: "Source Sans Pro", sans-serif;
+        background-color: #0f172a;
+        color: #333333;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Playfair Display", serif;
+        margin-top: 0;
+      }
+
+      hr {
+        display: none;
+      }
+
+      header {
+        background-color: #1e293b;
+        padding: 30px 0 20px 0;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 8px solid #fbbf24;
+      }
+
+      header h1 {
+        font-size: 2.8rem;
+        margin-bottom: 5px;
+        color: #ffffff;
+      }
+
+      header h2 {
+        font-size: 1.2rem;
+        color: #cbd5e1;
+        font-family: "Source Sans Pro", sans-serif;
+        letter-spacing: 2px;
+        margin-bottom: 25px;
+      }
+
+      nav ul {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.95rem;
+        padding: 10px 18px;
+        border-radius: 4px;
+        border: 2px solid transparent;
+      }
+
+      nav a:hover,
+      nav a:focus {
+        background-color: #fbbf24;
+        color: #0f172a;
+        border: 2px solid #fbbf24;
+      }
+
+      main {
+        max-width: 900px;
+        margin: 50px auto;
+        padding: 0 20px;
+      }
+
+      section {
+        background-color: #ffffff;
+        padding: 40px;
+        margin-bottom: 40px;
+        border-radius: 12px;
+        border-top: 8px solid #fbbf24;
+        border-bottom: 4px solid #cbd5e1;
+      }
+
+      section h2 {
+        font-size: 2.2rem;
+        color: #0f172a;
+        border-bottom: 3px solid #e2e8f0;
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+      }
+
+      section h3 {
+        color: #1e3a8a;
+      }
+
+      #about {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        background-color: #f8fafc;
+      }
+
+      #about img {
+        border-radius: 50%;
+        border: 6px solid #fbbf24;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+
+      #about div {
+        flex-grow: 1;
+      }
+
+      #about p {
+        font-size: 1.15rem;
+        color: #334155;
+        text-align: justify;
+      }
+
+      article {
+        background-color: #f1f5f9;
+        padding: 25px;
+        border-radius: 8px;
+        border-left: 8px solid #1e3a8a;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #cbd5e1;
+      }
+
+      article:hover {
+        background-color: #e2e8f0;
+      }
+
+      article h3 {
+        margin-bottom: 10px;
+        color: #0f172a;
+      }
+
+      article p {
+        margin: 5px 0;
+        color: #475569;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+        background-color: #ffffff;
+      }
+
+      th,
+      td {
+        padding: 15px;
+        text-align: left;
+        border: 2px solid #cbd5e1;
+      }
+
+      th {
+        background-color: #1e3a8a;
+        color: white;
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #f8fafc;
+      }
+
+      tbody tr:hover {
+        background-color: #e2e8f0;
+      }
+
+      ol {
+        padding-left: 20px;
+      }
+
+      ol li {
+        font-weight: 600;
+        margin-top: 15px;
+        color: #0f172a;
+      }
+
+      ol ul li {
+        font-weight: 400;
+        color: #475569;
+        margin-top: 5px;
+        list-style-type: square;
+      }
+
+      form {
+        background-color: #f8fafc;
+        padding: 35px;
+        border-radius: 8px;
+        border: 2px solid #cbd5e1;
+        border-top: 6px solid #1e3a8a;
+      }
+
+      form label {
+        font-weight: 600;
+        color: #0f172a;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      select {
+        width: 100%;
+        padding: 14px;
+        margin-top: 8px;
+        border: 2px solid #cbd5e1;
+        border-radius: 6px;
+        font-family: inherit;
+        font-size: 1rem;
+        box-sizing: border-box;
+      }
+
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      select:focus {
+        border-color: #fbbf24;
+        outline: none;
+      }
+
+      input[type="radio"],
+      input[type="checkbox"] {
+        margin-right: 10px;
+        transform: scale(1.2);
+        accent-color: #1e3a8a;
+      }
+
+      button[type="submit"] {
+        background-color: #1e3a8a;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.15rem;
+        font-weight: 700;
+        border-radius: 6px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #fbbf24;
+        color: #0f172a;
+      }
+
+      footer {
+        text-align: center;
+        padding: 40px;
+        background-color: #0f172a;
+        color: #94a3b8;
+        font-size: 1rem;
+        margin-top: 50px;
+        border-top: 2px solid #334155;
+      }
+
+      @media (max-width: 768px) {
+        #about {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        header h1 {
+          font-size: 2.2rem;
+        }
+
+        nav ul {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        section {
+          padding: 30px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
     <header>
-        <h1>Agnishan Bhattacharya</h1>
-        <h2>IIM BANGALORE | BBA DBE</h2>
+      <h1>Agnishan Bhattacharya</h1>
+      <h2>IIM BANGALORE | BBA DBE</h2>
 
-        <nav>
-            <ul>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+      <nav>
+        <ul>
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </header>
 
-    <hr>
+    <hr />
 
     <main>
+      <section id="about">
+        <img
+          src="./image/WhatsApp Image 2026-03-15 at 9.45.44 PM.jpeg"
+          alt="Agnishan's Profile Picture"
+          height="200"
+        />
+        <div>
+          <h3>Professional Summary</h3>
+          <p>
+            I am Agnishan Bhattacharya, a passionate student pursuing BBA in
+            Digital Business and Entrepreneurship (DBE) at IIM Bangalore. My
+            objective is to blend my understanding of business strategy and
+            entrepreneurship with finance. I am eager to leverage my
+            foundational knowledge to break into private equity and venture
+            capital.
+          </p>
+        </div>
+      </section>
 
-        <section id="about">
-            <img src="./image/WhatsApp Image 2026-03-15 at 9.45.44 PM.jpeg" alt="Agnishan's Profile Picture" height="200">
-            <h3>Professional Summary</h3>
-            <p>
-                I am Agnishan Bhattacharya, a passionate student pursuing BBA in Digital Business and Entrepreneurship (DBE) at IIM Bangalore. My objective is to blend my understanding of business strategy and entrepreneurship with finance. I am eager to leverage my foundational knowledge to break into private equity and venture capital.
-            </p>
-        </section>
+      <hr />
 
-        <hr>
+      <section id="education">
+        <h2>Education History</h2>
+        <article>
+          <h3>Indian Institute of Management Bangalore (IIMB)</h3>
+          <p>
+            Bachelor of Business Administration in Digital Business Enterprise
+            (BBA DBE)
+          </p>
+          <p>Graduation Year: 2028</p>
+          <p>Term 1 CGPA: <b>9.14</b></p>
+          <p>
+            <strong>Relevant Coursework:</strong> <br />
+            Website Development, Marketing, Financial & Management accounting,
+            Entrepreneurial & Advanced Statistics, and Entrepreneurship
+            Fundamentals.
+          </p>
+        </article>
+        <br />
 
-        <section id="education">
-            <h2>Education History</h2>
-            <article>
-                <h3>Indian Institute of Management Bangalore (IIMB)</h3>
-                <p>Bachelor of Business Administration in Digital Business Enterprise (BBA DBE)</p>
-                <p>Graduation Year: 2028</p>
-                <p>Term 1 CGPA: <b>9.14</b></p>
-                <p>
-                    <strong>Relevant Coursework:</strong> <br>
-                    Website Development, Marketing, Financial & Management accounting, Entrepreneurial & Advanced Statistics, and Entrepreneurship Fundamentals.
-                </p>
-            </article>
-            <br>
+        <article>
+          <h3>Delhi Public School, Siliguri</h3>
+          <p>High School Education</p>
+          <p>Graduation Year: 2020</p>
+          <ul>
+            <li>Class XII: 67.6%</li>
+            <li>Class X: 80.6%</li>
+          </ul>
+        </article>
+      </section>
 
-            <article>
-                <h3>Delhi Public School, Siliguri</h3>
-                <p>High School Education</p>
-                <p>Graduation Year: 2020</p>
-                <ul>
-                    <li>Class XII: 67.6%</li>
-                    <li>Class X: 80.6%</li>
-                </ul>
-            </article>
-        </section>
+      <hr />
 
-        <hr>
+      <section id="projects">
+        <h2>Featured Project</h2>
 
-        <section id="projects">
-            <h2>Featured Project</h2>
-            
-            <article>
-                <h3>NEONMINT - Custom AI-Generated NFT Art Business</h3>
-                <ul>
-                    <li><strong>Conceptualized and launched</strong> a Web3 digital art micro-business addressing a strict capital constraint of ₹250 and a 30-minute operational window.</li>
-                    <li><strong>Engineered</strong> a custom single-page application integrated with a Gemini-powered AI chatbot to automate customer support and reduce Web3 onboarding friction.</li>
-                    <li><strong>Minimized operating expenses</strong> to ₹9 by leveraging the Polygon network and ERC-721 contracts, absorbing gas fees to streamline the user journey for fiat (UPI) buyers.</li>
-                    <li><strong>Achieved a 98% net profit margin</strong> (₹441) by successfully fulfilling 9 custom AI-generated NFT orders with an average turnaround time of 2.5 minutes per unit.</li>
-                </ul>
-                <p>Focus Areas: Web3, Generative AI, Conversational Chatbots, Lean Entrepreneurship</p>
-            </article>
-        </section>
+        <article>
+          <h3>NEONMINT - Custom AI-Generated NFT Art Business</h3>
+          <ul>
+            <li>
+              <strong>Conceptualized and launched</strong> a Web3 digital art
+              micro-business addressing a strict capital constraint of ₹250 and
+              a 30-minute operational window.
+            </li>
+            <li>
+              <strong>Engineered</strong> a custom single-page application
+              integrated with a Gemini-powered AI chatbot to automate customer
+              support and reduce Web3 onboarding friction.
+            </li>
+            <li>
+              <strong>Minimized operating expenses</strong> to ₹9 by leveraging
+              the Polygon network and ERC-721 contracts, absorbing gas fees to
+              streamline the user journey for fiat (UPI) buyers.
+            </li>
+            <li>
+              <strong>Achieved a 98% net profit margin</strong> (₹441) by
+              successfully fulfilling 9 custom AI-generated NFT orders with an
+              average turnaround time of 2.5 minutes per unit.
+            </li>
+          </ul>
+          <p>
+            Focus Areas: Web3, Generative AI, Conversational Chatbots, Lean
+            Entrepreneurship
+          </p>
+        </article>
+      </section>
 
-        <hr>
+      <hr />
 
-        <section id="skills">
-            <h2>Skills & Certifications</h2>
+      <section id="skills">
+        <h2>Skills & Certifications</h2>
 
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Skill / Certification</th>
-                        <th>Issuing Organization</th>
-                        <th>Year</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Investment Banking certification</td>
-                        <td>365Analyst</td>
-                        <td>2025</td>
-                    </tr>
-                    <tr>
-                        <td>DCF valuation certification</td>
-                        <td>WSO</td>
-                        <td>2025</td>
-                    </tr>
-                    <tr>
-                        <td colspan="3">Currently pursuing CFA level 1</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <br>
+        <table border="1">
+          <thead>
+            <tr>
+              <th>Skill / Certification</th>
+              <th>Issuing Organization</th>
+              <th>Year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Investment Banking certification</td>
+              <td>365Analyst</td>
+              <td>2025</td>
+            </tr>
+            <tr>
+              <td>DCF valuation certification</td>
+              <td>WSO</td>
+              <td>2025</td>
+            </tr>
+            <tr>
+              <td colspan="3">Currently pursuing CFA level 1</td>
+            </tr>
+          </tbody>
+        </table>
 
-            <h3>Hobbies</h3>
+        <br />
 
-            <ol>
-                <li>Football
-                    <ul>
-                        <li>Captain of High School Team</li>                        </li>
-                    </ul>
-                </li>
-                <li>Playing Chess</li>
-                <ul>
-                    <li>1500 blitz rating</li>
-                </ul>
-                <li>Reading books</li>
-                <ul>
-                    <li>Currently doing a challenge of reading a book every week</li>
-                </ul>
-            </ol>
-        </section>
+        <h3>Hobbies</h3>
 
-        <hr>
+        <ol>
+          <li>
+            Football
+            <ul>
+              <li>Captain of High School Team</li>
+            </ul>
+          </li>
+          <li>Playing Chess</li>
+          <ul>
+            <li>1500 blitz rating</li>
+          </ul>
+          <li>Reading books</li>
+          <ul>
+            <li>Currently doing a challenge of reading a book every week</li>
+          </ul>
+        </ol>
+      </section>
 
-        <section id="contact">
-            <h2>Get In Touch</h2>
-            <p>Interested in working together? Fill out the form below!</p>
-        
-            <form action="#submit">
-                
-                <label for="fullName">Full Name</label><br>
-                <input type="text" id="fullName" name="fullName" required minlength="3" maxlength="50"><br><br>
+      <hr />
 
-                <label for="email">Email Address</label><br>
-                <input type="email" id="email" name="email" required><br><br>
+      <section id="contact">
+        <h2>Get In Touch</h2>
+        <p>Interested in working together? Fill out the form below!</p>
 
-                <label for="inquiryType">Type of Inquiry</label><br>
-                <select id="inquiryType" name="inquiryType">
-                    <option value="job">Internship Opportunity</option>
-                    <option value="freelance">Freelance Project</option>
-                    <option value="networking">Networking</option>
-                </select><br><br>
+        <form action="#submit">
+          <label for="fullName">Full Name</label><br />
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            required
+            minlength="3"
+            maxlength="50"
+          /><br /><br />
 
-                <label>Preferred method of contact:</label><br>
-                <input type="radio" id="contactEmail" name="contactPref" value="email" checked>
-                <label for="contactEmail">Email</label><br>
-                <input type="radio" id="contactPhone" name="contactPref" value="phone">
-                <label for="contactPhone">Phone</label><br><br>
+          <label for="email">Email Address</label><br />
+          <input type="email" id="email" name="email" required /><br /><br />
 
-                <input type="checkbox" id="terms" name="terms" required>
-                <label for="terms">I understand this is a demonstration form created for a class assignment.</label><br><br>
+          <label for="inquiryType">Type of Inquiry</label><br />
+          <select id="inquiryType" name="inquiryType">
+            <option value="job">Internship Opportunity</option>
+            <option value="freelance">Freelance Project</option>
+            <option value="networking">Networking</option></select
+          ><br /><br />
 
-                <button type="submit">Send Message</button>
-            </form>
-        </section>
+          <label>Preferred method of contact:</label><br />
+          <input
+            type="radio"
+            id="contactEmail"
+            name="contactPref"
+            value="email"
+            checked
+          />
+          <label for="contactEmail">Email</label><br />
+          <input
+            type="radio"
+            id="contactPhone"
+            name="contactPref"
+            value="phone"
+          />
+          <label for="contactPhone">Phone</label><br /><br />
 
+          <input type="checkbox" id="terms" name="terms" required />
+          <label for="terms"
+            >I understand this is a demonstration form created for a class
+            assignment.</label
+          ><br /><br />
+
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
     </main>
 
-    <hr>
+    <hr />
 
     <footer>
-        <p> 2026 | Agnishan Bhattacharya | Designed as part of the IIMB Website Development Course</p>
+      <p>
+        2026 | Agnishan Bhattacharya | Designed as part of the IIMB Website
+        Development Course
+      </p>
     </footer>
-
-</body>
+  </body>
 </html>
